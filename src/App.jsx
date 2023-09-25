@@ -1,10 +1,13 @@
 import "./App.css";
-import StudentTable from "./components/StudentTable";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./navigation/Router";
 
 function App() {
   return (
     <>
-      <StudentTable />
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </>
   );
 }
