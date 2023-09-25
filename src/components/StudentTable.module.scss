@@ -1,0 +1,43 @@
+main {
+  background-color: rgb(85, 79, 79);
+}
+.header {
+  text-align: center;
+  color: white;
+  background-color: rgb(108, 130, 244);
+}
+.headerRed {
+  background-color: red;
+  text-align: center;
+  color: white;
+}
+
+.content {
+  text-align: center;
+  font-weight: 500;
+  color: red;
+}
+
+.rowOdd {
+  background-color: white;
+}
+
+.rowEven {
+  background-color: rgb(212, 218, 245);
+}
+
+.total {
+  .contentTotal {
+    background-color: white;
+    color: black;
+    td {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 20px 0;
+    }
+    .totalRed {
+      background-color: red;
+    }
+  }
+}
