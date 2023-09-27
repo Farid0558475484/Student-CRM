@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import s from "./Login.module.scss";
 
 function Login() {
@@ -8,7 +9,7 @@ function Login() {
 
   const handleLogin = () => {
     // Ваша логика для проверки учетных данных пользователя
-    if (username === "yourUsername" && password === "yourPassword") {
+    if (username === "aaa" && password === "aaa") {
       setLoggedIn(true);
     } else {
       alert("Неправильное имя пользователя или пароль");
@@ -34,11 +35,15 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button onClick={handleLogin}>Войти</button>
+              <Link to="/dashboard">
+                <button onClick={handleLogin}>Войти</button>
+              </Link>
             </div>
             {loggedIn && (
               <div className={s.loginSuccess}>
-                <button>Вы успешно вошли в систему!</button>
+                <Link to="/dashboard">
+                  <button>Вы успешно вошли в систему!</button>
+                </Link>
               </div>
             )}
           </div>
