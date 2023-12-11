@@ -1,54 +1,56 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import s from "./Login.module.scss";
+import { useNavigate } from "react-router-dom";
+import { useSignInMutation } from "./../../api/authApi";
+import { useDispatch } from "react-redux";
+import { setAuth } from "./../../redux/features/auth/authSlice";
 
 function Login() {
+  const [loginUser] = useSignInMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Локальные состояния для отслеживания введенных значений логина и пароля
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    // Ваша логика для проверки учетных данных пользователя
-    if (username === "aaa" && password === "aaa") {
-      setLoggedIn(true);
-    } else {
-      alert("Неправильное имя пользователя или пароль");
+  const handleLogin = async () => {
+    try {
+      // Вызов loginUser с передачей логина и пароля
+      const response = await loginUser({ username, password });
+
+      // Извлечение данных из ответа
+      const { Token, UserName, Role } = response.data;
+
+      // Сохранение токена в sessionStorage
+      sessionStorage.setItem("token", Token);
+
+      // Отправка действия для установки состояния аутентификации
+      dispatch(
+        setAuth({ isAuthenticated: true, userName: UserName, role: Role })
+      );
+      // Перенаправление на панель приборов
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Login ve ya parol sehfdi");
     }
   };
 
   return (
     <section>
-      <div className="container">
-        <div className="row">
-          <div className={s.loginPage}>
-            <div className={s.loginBox}>
-              <h2>Вход</h2>
-              <input
-                type="text"
-                placeholder="Имя пользователя"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Пароль"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Link to="/dashboard">
-                <button onClick={handleLogin}>Войти</button>
-              </Link>
-            </div>
-            {loggedIn && (
-              <div className={s.loginSuccess}>
-                <Link to="/dashboard">
-                  <button>Вы успешно вошли в систему!</button>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <input
+        type="text"
+        placeholder="Имя пользователя"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Пароль"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={handleLogin}>Войти</button>
     </section>
   );
 }

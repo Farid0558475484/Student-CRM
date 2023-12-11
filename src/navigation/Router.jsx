@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import StudentTable from "../components/StudentTable";
+import StudentTable from "../components/StudentTable/StudentTable";
 import Login from "./../pages/Login/Login";
 import Dashboard from "./../pages/Dashboard/Dashboard";
 
