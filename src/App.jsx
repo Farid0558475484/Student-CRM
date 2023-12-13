@@ -1,14 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-import Router from "./navigation/Router";
+import StudentTable from "./pages/StudentTable/StudentTable";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
+
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<StudentTable />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

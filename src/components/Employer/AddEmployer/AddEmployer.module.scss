@@ -1,0 +1,57 @@
+// AddEmployer.module.scss
+
+.AddEmployer {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px; // Negative margin to offset padding on columns
+}
+
+.col {
+  padding: 15px; // Padding on columns
+}
+.login,
+.password,
+.name,
+.lastName,
+.fatherName,
+.birthDate,
+.gender,
+.email,
+.mobile1,
+.mobile2,
+.departament,
+.position .button {
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button button {
+  margin: 20px 0;
+  border: none;
+  background-color: rgb(95, 209, 103);
+  color: white;
+  font-size: 16px;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+  background-color: rgb(75, 179, 83);
+}
+

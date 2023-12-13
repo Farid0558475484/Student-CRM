@@ -12,8 +12,12 @@ export const autApi = baseQuery.injectEndpoints({
         providesTags: ["User"],
       }),
     }),
+    getRole: builder.query({
+      query: () => `/api/Security/roles/readall`,
+      providesTags: ["User"],
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useSignInMutation } = autApi;
+export const { useSignInMutation, useGetRoleQuery } = autApi;

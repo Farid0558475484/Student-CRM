@@ -14,10 +14,14 @@ export const authSlice = createSlice({
       state.userName = userName;
       state.role = role;
     },
-    // Добавьте другие действия, если необходимо (например, выход из системы)
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.userName = null;
+      state.role = null;
+    },
   },
 });
 
-export const { setAuth } = authSlice.actions;
+export const { setAuth, logout } = authSlice.actions;
 
 export default authSlice.reducer;
