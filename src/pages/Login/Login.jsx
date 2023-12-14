@@ -10,6 +10,9 @@ function Login() {
   const [loginUser] = useSignInMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const location = useLocation();
+
+  // const fromPage = location.state?.from?.pathname || "/";
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
